@@ -3,8 +3,19 @@ import logo from "../img/logo.svg";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import Card from "../components/Card";
 
-const Comics = ({ setUser, token }) => {
+const Comics = ({
+  setUser,
+  token,
+  handleFavorites,
+  key,
+  id,
+  name,
+  description,
+  image,
+  type,
+}) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [filters, setFilters] = useState("");
@@ -66,7 +77,7 @@ const Comics = ({ setUser, token }) => {
           </Link>
         </div>
       </header>
-      <div className="pagination">
+      <div className="paginationcomics">
         <button
           className={page < 2 ? "display-none" : null}
           onClick={() => {
@@ -87,22 +98,21 @@ const Comics = ({ setUser, token }) => {
         </button>
       </div>
       <div className="container">
-        <div className="comics-container">
-          {data.results.map((comic) => {
-            const picture =
-              comic.thumbnail.path + "." + comic.thumbnail.extension;
-            // console.log(picture);
-
+        <div className="card-container">
+          <div className="carousel"></div>
+          {data.results.map((comics) => {
             return (
-              <section key={comic._id}>
+              <section key={comics._id}>
                 <div className="comic-big-card">
-                  <div className="comic-card">
-                    <img src={picture} alt="comics" />
-                  </div>
-                  <div className="comic-info">
-                    <h1>{comic.title}</h1>
-                  </div>
-                  <p>{comic.description}</p>
+                  <Card
+                    key={comics._id}
+                    id={comics._id}
+                    name={comics.title}
+                    description={comics.description}
+                    image={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
+                    handleFavorites={handleFavorites}
+                    type="comics"
+                  />
                 </div>
               </section>
             );

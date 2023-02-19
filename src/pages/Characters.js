@@ -3,8 +3,19 @@ import logo from "../img/logo.svg";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import Card from "../components/Card";
 
-const Characters = ({ setUser, token }) => {
+const Characters = ({
+  setUser,
+  token,
+  handleFavorites,
+  key,
+  id,
+  name,
+  description,
+  image,
+  type,
+}) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [filters, setFilters] = useState("");
@@ -68,7 +79,7 @@ const Characters = ({ setUser, token }) => {
           </Link>
         </div>
       </header>
-      <div className="pagination">
+      <div className="paginationcharacters">
         {page > 1 && (
           <button
             className="buttonleft"
@@ -89,24 +100,25 @@ const Characters = ({ setUser, token }) => {
           next
         </button>
       </div>
+
       <div className="container">
         <div className="character-container">
           {data.results.map((character) => {
-            const picture =
-              character.thumbnail.path + "." + character.thumbnail.extension;
             return (
               <section key={character._id}>
                 <div className="character-big-card">
-                  <div className="character-card">
-                    <Link className="lien" to={`/comics/${character._id}`}>
-                      <img src={picture} alt="character" />
-                    </Link>
-                  </div>
-                  <div className="character-info">
-                    <h1>{character.name}</h1>
-                  </div>
-                  <p>{character.description}</p>
+                  <Card
+                    key={character._id}
+                    id={character._id}
+                    name={character.name}
+                    description={character.description}
+                    image={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                    link={`/comics/${character._id}`}
+                    handleFavorites={handleFavorites}
+                    type="heroes"
+                  />
                 </div>
+                <h2>{character.name}</h2>
               </section>
             );
           })}

@@ -120,6 +120,7 @@ CHARACTERS*/
   justify-content: space-between;
   gap: 40px;
   margin-top: 50px;
+  margin-right: 35px;
 }
 
 .character-big-card {
@@ -138,9 +139,32 @@ CHARACTERS*/
   display: none;
 }
 
+.paginationcharacters {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 60px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  color: white;
+}
+.paginationcharacters button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.paginationcharacters p {
+  margin-bottom: 35px;
+}
+
 .character-big-card img {
-  height: 85%;
-  width: 85%;
+  height: 95%;
+  width: 95%;
   object-fit: cover;
   object-position: center;
   position: relative;
@@ -181,7 +205,7 @@ COMICS*/
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: 180px;
 }
 
 .comics-container {
@@ -245,23 +269,28 @@ COMICS*/
   position: relative;
 }
 
-.pagination {
+.paginationcomics {
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 50px;
-  margin-top: 40px;
+  margin-top: 60px;
   margin-left: 20px;
+  margin-bottom: 20px;
   color: white;
 }
-.pagination button {
+.paginationcomics button {
   background-color: transparent;
   border: none;
   color: white;
   cursor: pointer;
+  margin-bottom: 40px;
 }
 
+.paginationcomics p {
+  margin-bottom: 35px;
+}
 .display-none {
   display: none;
   padding-left: 100px;
@@ -276,9 +305,30 @@ COMICS*/
   margin-right: 15px;
 }
 
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 30px;
+}
+
 /* -----------------------------------------------------
 --------------------------------------------------------
 COMICS BY CHARACTERID */
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 5px;
+  background-color: #050301;
+  border-radius: 20px;
+}
+.comics-container {
+  display: flex;
+  gap: 40px;
+}
 
 .comicsbyperso {
   display: flex;
@@ -293,6 +343,7 @@ COMICS BY CHARACTERID */
   display: flex;
   gap: 20px;
   justify-content: center;
+  flex-wrap: wrap;
   margin-top: 50px;
   border-left: #ffc91c solid 5px;
   padding: 10px;
@@ -300,7 +351,7 @@ COMICS BY CHARACTERID */
 }
 
 .characterPic {
-  width: 30%;
+  width: 20%;
 }
 .characterPic img {
   width: 100%;
@@ -312,8 +363,7 @@ COMICS BY CHARACTERID */
 .carousel {
   background-color: black;
   display: flex;
-  width: 70%;
-  overflow-x: scroll;
+  width: 100%;
   gap: 20px;
 }
 .carousel::-webkit-scrollbar {
@@ -328,7 +378,8 @@ COMICS BY CHARACTERID */
 }
 
 .carousel img {
-  height: 500px;
+  height: 100px;
+  width: 180px;
 }
 
 /* -----------------------------------------------------
@@ -443,81 +494,131 @@ Login */
 
 /* -----------------------------------------------------
 --------------------------------------------------------
-FAVORIS */
+CARD */
 
-.favoris-container {
+.heroes-container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  color: white;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin-top: 40px;
 }
-.character-favoris-content {
-  margin-top: 20px;
-  background-color: black;
-  border-left: #ffc91c solid 5px;
+
+.hero-images {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  min-height: 340px;
+}
+
+.heart-plus-icon-characters {
+  color: #f9f6e8;
+  position: absolute;
+  margin-left: -35px;
+  background-color: rgba(5, 3, 1, 0.9);
+  border-radius: 50%;
   padding: 10px;
-}
-.character-favoris-content h2 {
-  font-size: 30px;
-  padding-bottom: 10px;
-  color: white;
-}
-.carousel-character {
-  background-color: black;
-  display: flex;
-  gap: 10px;
-  overflow-x: scroll;
+  font-size: 20px;
+  cursor: pointer;
 }
 
-.carousel-character::-webkit-scrollbar {
-  display: none;
-}
-.carousel-character p {
-  font-size: 15px;
-  padding-top: 5px;
-}
-.carousel-card-character {
-  background-color: black;
-  height: 300px;
-  width: 260px;
-}
-.carousel-card-character img {
-  width: 260px;
-}
-
-.comics-favoris-content {
-  background-color: black;
-  border-left: #ffc91c solid 5px;
+.heart-plus-icon {
+  color: #f9f6e8;
+  position: absolute;
+  margin-left: -35px;
+  background-color: rgba(5, 3, 1, 0.9);
+  border-radius: 50%;
   padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
 }
-.comics-favoris-content h2 {
-  font-size: 30px;
-  padding-bottom: 10px;
+
+h2 {
   color: white;
+  font-size: 10px;
+  font-weight: bold;
+  font-size: 18px;
 }
-.carousel-comic {
-  background-color: black;
+
+/* -----------------------------------------------------
+--------------------------------------------------------
+Favoris */
+
+.fav-images {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.favorites-section {
   display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+}
+.favorites-section button {
+  background-color: #050301;
+  color: #016db5;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  border: none;
+}
+.fav-container {
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  justify-content: space-between;
+  margin-top: 50px;
+  align-items: baseline;
+}
+
+.fav-div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 15px;
+  align-items: center;
   gap: 10px;
-  overflow-x: scroll;
 }
-.carousel-comic p {
-  font-size: 15px;
-  padding-top: 5px;
+.image-container {
+  height: 200px;
 }
-.comic-card-character {
-  background-color: black;
+.favorites-section h2 {
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
 }
-.carousel-card-comic img {
-  height: 350px;
-  width: 260px;
+.purple {
+  border: solid 7px #4d0e33;
+}
+.blue {
+  border: solid 7px #272542;
 }
 
-.carousel-comic::-webkit-scrollbar {
-  display: none;
+.hero-title {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: #272542 3px solid;
 }
-
-.emptyFavorisList {
-  height: 260px;
-  color: white;
+.comics-title {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: #4d0e33 3px solid;
+}
+title {
+  display: flex;
+  flex-direction: column;
+}
+.favorites-section h1 {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 30px;
+  font-size: 30px;
+  letter-spacing: 2px;
+  font-style: italic;
+  color: #f9f6e8;
+  padding-bottom: 20px;
+  border-bottom: #272542 1px solid;
 }

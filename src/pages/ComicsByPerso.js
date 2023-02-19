@@ -1,10 +1,22 @@
 import axios from "axios";
 import logo from "../img/logo.svg";
+import Card from "../components/Card";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-const ComicsByPerso = ({ setUser }) => {
+const ComicsByPerso = ({
+  setUser,
+  token,
+  handleFavorites,
+  key,
+  id,
+  name,
+  description,
+  image,
+  type,
+}) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { characterId } = useParams();
@@ -25,8 +37,10 @@ const ComicsByPerso = ({ setUser }) => {
   }, [characterId]);
 
   return isLoading ? (
-    <p>En cours de chargement...</p>
-  ) : (
+    <div className="loading">
+      <p>En cours de chargement...</p>
+    </div>
+  ) : token ? (
     <div>
       <header>
         <div className="comicsbyperso">
@@ -68,23 +82,32 @@ const ComicsByPerso = ({ setUser }) => {
               alt="characterPic"
             />
           </div>
-          <div className="carousel">
-            {data.comics.map((elem, index) => {
-              const comicPicture =
-                elem.thumbnail.path + "." + elem.thumbnail.extension;
-
-              return (
-                <section key={index} className="comicById-container">
-                  <img src={comicPicture} alt="" />
-                  <h1>{elem.title}</h1>
-                  <p>{elem.description}</p>
-                </section>
-              );
-            })}
+          <div className="container">
+            <div className="comics-container">
+              <div className="carousel">
+                {data.comics.map((elem, index) => {
+                  return (
+                    <section key={index} className="comicById-container">
+                      <Card
+                        key={elem._id}
+                        id={elem._id}
+                        name={elem.title}
+                        description={elem.description}
+                        image={`${elem.thumbnail.path}.${elem.thumbnail.extension}`}
+                        handleFavorites={handleFavorites}
+                        type="comics"
+                      />
+                    </section>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 

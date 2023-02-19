@@ -1,80 +1,113 @@
-// import { Link } from "react-router-dom";
-// import { useEffect, useState } from "react";
+import logo from "../img/logo.svg";
+import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-// import logo from "../img/logo.svg";
+const Favorites = ({ setUser, token, favorites, handleFavorites }) => {
+  const heroes = [];
+  const comics = [];
 
-// const Favoris = ({ setUser, favoris, setFavoris }) => {
-//   const [deleteFav, setDeleteFav] = useState();
+  for (let i = 0; i < favorites.length; i++) {
+    if (favorites[i].type === "heroes") {
+      heroes.push(favorites[i]);
+    } else {
+      comics.push(favorites[i]);
+    }
+  }
+  return token ? (
+    <>
+      <header>
+        <div className="comicsbyperso">
+          <Link className="lien" to={"/"}>
+            <div className="logo">
+              <img src={logo} alt="" />
+            </div>
+          </Link>
 
-//   useEffect(() => {
-//     const tab = [...favoris];
-//     tab.map((elem, index) => {
-//       if (deleteFav === elem._id) {
-//         tab.splice(index, 1);
-//         setFavoris(tab);
-//       }
-//     });
-//   }, [deleteFav, favoris]);
+          <div className="button">
+            <Link className="lien" to={"/comics"}>
+              <button>Comics</button>
+            </Link>
 
-//   return (
-//     <div>
-//       <header>
-//         <Link to={"/"}>
-//           <div className="logo">
-//             <img src={logo} alt="" />
-//           </div>
-//         </Link>
+            <Link className="lien" to={"/characters"}>
+              <button>Personnages</button>
+            </Link>
 
-//         <div className="button">
-//           <Link className="lien" to={"/characters"}>
-//             <button>Personnages</button>
-//           </Link>
+            <Link className="lien" to={"/favoris"}>
+              <button>Favoris</button>
+            </Link>
+            <Link className="lien" to={"/"}>
+              <button
+                onClick={() => {
+                  setUser();
+                }}
+              >
+                Deconnexion
+              </button>
+            </Link>
+          </div>
+        </div>
+      </header>
+      <div className="fav-container">
+        <section className="favorites-section ">
+          <h1>Favorite Characters</h1>
+          {heroes.map((elem) => {
+            return (
+              <>
+                <div className="fav-div">
+                  <img
+                    src={elem.image}
+                    alt="marvel images"
+                    className="fav-images blue"
+                  />
 
-//           <Link className="lien" to={"/favoris"}>
-//             <button>Favoris</button>
-//           </Link>
+                  <h2>{elem.name}</h2>
 
-//           <Link className="lien" to={"/"}>
-//             <button
-//               onClick={() => {
-//                 setUser();
-//               }}
-//             >
-//               Deconnexion
-//             </button>
-//           </Link>
-//         </div>
-//       </header>
-//       <div className="cards">
-//         {favoris.map((fav) => {
-//           return (
-//             <div key={fav._id}>
-//               <article className="card">
-//                 <h3>{fav.title || fav.name}</h3>
+                  <button
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleFavorites(elem);
+                    }}
+                  >
+                    Remove
+                  </button>
+                </div>
+              </>
+            );
+          })}
+        </section>
+        <section className="favorites-section">
+          <h1>Favorite Comics</h1>
 
-//                 <img
-//                   src={fav.thumbnail.path + "." + fav.thumbnail.extension}
-//                   alt={fav.title}
-//                 />
-//                 <p className={fav.description ? "card-desc" : "display-none"}>
-//                   {fav.description}
-//                 </p>
-//               </article>
-//               <div className="delete-fav">
-//                 <span
-//                   onClick={() => {
-//                     setDeleteFav(fav._id);
-//                   }}
-//                 >
-//                   Delete from Favorites
-//                 </span>
-//               </div>
-//             </div>
-//           );
-//         })}
-//       </div>
-//     </div>
-//   );
-// };
+          {comics.map((elem) => {
+            return (
+              <>
+                <div className="fav-div">
+                  <img
+                    src={elem.image}
+                    alt="marvel images"
+                    className="fav-images purple"
+                  />
 
-// export default Favoris;
+                  <h2>{elem.name}</h2>
+
+                  <button
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleFavorites(elem);
+                    }}
+                  >
+                    Remove
+                  </button>
+                </div>
+              </>
+            );
+          })}
+        </section>
+      </div>
+    </>
+  ) : (
+    <Navigate to="/login" />
+  );
+};
+
+export default Favorites;
