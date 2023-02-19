@@ -1,38 +1,523 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap");
+
+body {
+  background-color: black;
+  font-family: "Montserrat", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body::-webkit-scrollbar {
+  display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* -----------------------------------------------------
+--------------------------------------------------------
+HEADER */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
+  background-color: red;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
+}
+
+header img {
+  width: 113px;
+  height: 49px;
+  border-radius: 5px;
+}
+
+.logo:hover {
+  opacity: 90%;
+}
+
+header p {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+header input {
+  width: 60%;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/e/e9/Vector_search_icon.png");
+  background-size: 20px;
+  background-position: 18px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 0px 12px 60px;
+  margin-left: 40px;
+  border-radius: 30px;
+  border: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header .button {
+  display: flex;
+  gap: 15px;
+}
+
+header button {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  width: 120px;
+  height: 30px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+header button:hover {
+  color: violet;
+}
+
+/* -----------------------------------------------------
+--------------------------------------------------------
+HOME*/
+
+.imagefond {
+  background-image: url("https://images.alphacoders.com/948/948697.jpg");
+  background-size: cover;
+}
+
+.content-home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90vh;
+}
+
+.content-home div {
+  background-color: white;
+  opacity: 50%;
+  height: 450px;
+  width: 450px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 100px;
+}
+
+.content-home .link {
+  text-decoration: none;
+}
+
+.content-home h1 {
+  font-size: 90px;
+  font-weight: bold;
+  padding: 40px;
+}
+
+.content-home h1:hover {
+  color: violet;
+}
+
+/* -----------------------------------------------------
+--------------------------------------------------------
+CHARACTERS*/
+
+.character-container {
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.character-big-card {
+  background-color: black;
+  width: 250px;
+  height: 300px;
+  overflow: scroll;
+}
+
+.character-card {
+  height: 250px;
+  width: 280px;
+}
+
+.character-big-card::-webkit-scrollbar {
+  display: none;
+}
+
+.character-big-card img {
+  height: 85%;
+  width: 85%;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+}
+
+.character-big-card p {
+  color: white;
+  line-height: 15px;
+  padding-top: 10px;
+}
+
+.character-big-card :hover {
+  opacity: 90%;
+}
+.character-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 5px 0px 5px;
+}
+
+.character-info h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.character-card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+}
+
+/* -----------------------------------------------------
+--------------------------------------------------------
+COMICS*/
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.comics-container {
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.comic-big-card {
+  background-color: black;
+  width: 260px;
+  height: 450px;
+  overflow: scroll;
+}
+
+.comic-card {
+  height: 390px;
+  width: 260px;
+}
+
+.comic-big-card::-webkit-scrollbar {
+  display: none;
+}
+
+.comic-big-card img {
+  height: 85%;
+  width: 85%;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+}
+
+.comic-big-card p {
+  color: white;
+  line-height: 15px;
+  padding-top: 10px;
+}
+
+.comic-big-card :hover {
+  opacity: 90%;
+}
+.comic-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 5px 0px 5px;
+}
+
+.comic-info h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+.comic-card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+}
+
+.pagination {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 40px;
+  margin-left: 20px;
+  color: white;
+}
+.pagination button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.display-none {
+  display: none;
+  padding-left: 100px;
+}
+
+.buttonleft {
+  font-size: 12px;
+  margin-right: 10px;
+}
+.buttonright {
+  font-size: 13px;
+  margin-right: 15px;
+}
+
+/* -----------------------------------------------------
+--------------------------------------------------------
+COMICS BY CHARACTERID */
+
+.comicsbyperso {
+  display: flex;
+  gap: 850px;
+}
+
+.comicsbyperso .button {
+  margin-top: 10px;
+}
+
+.comicsbyid-content {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 50px;
+  border-left: #ffc91c solid 5px;
+  padding: 10px;
+  color: white;
+}
+
+.characterPic {
+  width: 30%;
+}
+.characterPic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.carousel {
+  background-color: black;
+  display: flex;
+  width: 70%;
+  overflow-x: scroll;
+  gap: 20px;
+}
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel h1 {
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.carousel img {
+  height: 500px;
+}
+
+/* -----------------------------------------------------
+--------------------------------------------------------
+SIGN UP */
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-image: url("./img/marvel.jpg");
+  background-size: 1800px;
+  background-position: top left;
+  background-repeat: no-repeat;
+  height: 800px;
+}
+.signup-form {
+  display: flex;
+  width: 275px;
+  margin: auto;
+  flex-direction: column;
+}
+.signup-form > input {
+  border: none;
+  border-bottom: 1px solid #fcced3;
+  height: 35px;
+  margin-bottom: 20px;
+}
+
+.signup-form input::placeholder {
+  color: #cbcccd;
+  font-size: 16px;
+}
+
+.signup-form input[type="checkbox"] {
+  transform: scale(2);
+  margin-right: 20px;
+}
+
+.checkbox-container {
+  margin-top: 20px;
+  padding: 10px;
+}
+.checkbox-container > div {
+  display: flex;
+}
+.checkbox-container > p {
+  text-align: left;
+  color: #999999;
+  font-size: 12px;
+}
+
+.checkbox-container span {
+  color: #666666;
+}
+
+.signup-form button {
+  background-color: #5c48d1;
+  height: 45px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.signup-form button:hover {
+  opacity: 90%;
+}
+
+.signup-container a {
+  color: #5c48d1;
+  font-size: 12px;
+}
+
+.signup-login-error-message {
+  color: red;
+  font-size: 9px;
+}
+.logoSignup:hover {
+  opacity: 90%;
+}
+
+/* -----------------------------------------------------
+--------------------------------------------------------
+Login */
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-image: url("./img/marvel2.jpg");
+  background-size: 1800px;
+  background-position: top left;
+  background-repeat: no-repeat;
+  height: 800px;
+}
+
+.login-container a {
+  color: #5c48d1;
+  font-size: 12px;
+}
+
+.logoLogin:hover {
+  opacity: 90%;
+}
+
+/* -----------------------------------------------------
+--------------------------------------------------------
+FAVORIS */
+
+.favoris-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: white;
+}
+.character-favoris-content {
+  margin-top: 20px;
+  background-color: black;
+  border-left: #ffc91c solid 5px;
+  padding: 10px;
+}
+.character-favoris-content h2 {
+  font-size: 30px;
+  padding-bottom: 10px;
+  color: white;
+}
+.carousel-character {
+  background-color: black;
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+}
+
+.carousel-character::-webkit-scrollbar {
+  display: none;
+}
+.carousel-character p {
+  font-size: 15px;
+  padding-top: 5px;
+}
+.carousel-card-character {
+  background-color: black;
+  height: 300px;
+  width: 260px;
+}
+.carousel-card-character img {
+  width: 260px;
+}
+
+.comics-favoris-content {
+  background-color: black;
+  border-left: #ffc91c solid 5px;
+  padding: 10px;
+}
+.comics-favoris-content h2 {
+  font-size: 30px;
+  padding-bottom: 10px;
+  color: white;
+}
+.carousel-comic {
+  background-color: black;
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+}
+.carousel-comic p {
+  font-size: 15px;
+  padding-top: 5px;
+}
+.comic-card-character {
+  background-color: black;
+}
+.carousel-card-comic img {
+  height: 350px;
+  width: 260px;
+}
+
+.carousel-comic::-webkit-scrollbar {
+  display: none;
+}
+
+.emptyFavorisList {
+  height: 260px;
+  color: white;
 }
